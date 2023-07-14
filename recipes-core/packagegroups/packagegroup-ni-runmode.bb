@@ -10,6 +10,7 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
+	bolt \
 	dosfstools \
 	e2fsprogs \
 	e2fsprogs-e2fsck \
@@ -31,7 +32,6 @@ RDEPENDS:${PN} = "\
 	parted \
 	rtctl \
 	systemimageupdateinfo \
-	tbtadm \
 	util-linux-sfdisk \
 	vlan \
 	zip \
