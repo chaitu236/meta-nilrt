@@ -10,7 +10,6 @@ PACKAGE_ARCH = "${MACHINE_ARCH}"
 inherit packagegroup
 
 RDEPENDS:${PN} = "\
-	bolt \
 	dosfstools \
 	e2fsprogs \
 	e2fsprogs-e2fsck \

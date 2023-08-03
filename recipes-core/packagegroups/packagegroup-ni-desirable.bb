@@ -18,6 +18,7 @@ RDEPENDS:${PN}:append:x64 = "\
 
 RDEPENDS:${PN} += "\
 	binutils \
+	bolt \
 	cgdb \
 	cifs-utils \
 	elfutils \
@@ -58,4 +59,10 @@ RDEPENDS:${PN} += "\
 "
 RDEPENDS:${PN}:append:x64 = "\
 	kernel-test-nohz \
+"
+
+
+# Thunderbolt support packages
+RDEPENDS:${PN} += "\
+	bolt \
 "
