@@ -1,5 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
+DEPENDS += "update-rc.d-native"
+
 SRC_URI += "\
    file://bolt \
    file://boltctl \
@@ -16,4 +18,6 @@ do_install:append() {
    # in its place
    mv ${D}${bindir}/boltctl ${D}${libexecdir}/
    install -m 0755 ${WORKDIR}/boltctl ${D}${bindir}/
+
+   update-rc.d -r ${D} bolt           start 3 2 3 5 .
 }
