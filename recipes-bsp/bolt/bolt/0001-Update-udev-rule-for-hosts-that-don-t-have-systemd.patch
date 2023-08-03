@@ -1,0 +1,29 @@
+From f4398139e01c16c9d5d0bf83d0f6aaab367ba041 Mon Sep 17 00:00:00 2001
+From: Chaitanya Vadrevu <chaitanya.vadrevu@ni.com>
+Date: Thu, 3 Aug 2023 13:13:44 -0500
+Subject: [PATCH] Update udev rule for hosts that don't have systemd
+
+The new rule calls boltctl when thunderbolt domain is added. boltctl in
+turn starts boltd if dbus is already running.
+
+If dbus isn't running, like in cases when host boots with thunderbolt
+device connected, a separate mechanism must be used for starting boltd
+(e.g., an initscript).
+
+Signed-off-by: Chaitanya Vadrevu <chaitanya.vadrevu@ni.com>
+---
+ data/90-bolt.rules | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/90-bolt.rules b/data/90-bolt.rules
+index 47b24e0..c2d4711 100644
+--- a/data/90-bolt.rules
++++ b/data/90-bolt.rules
+@@ -11,6 +11,6 @@
+ ACTION=="remove", GOTO="bolt_end"
+ 
+ # start bolt service if we have a thunderbolt device connected
+-SUBSYSTEM=="thunderbolt", TAG+="systemd", ENV{SYSTEMD_WANTS}+="bolt.service"
++ACTION=="add", SUBSYSTEM=="thunderbolt", ENV{DEVTYPE}=="thunderbolt_domain", RUN{program}+="/usr/bin/boltctl"
+ 
+ LABEL="bolt_end"

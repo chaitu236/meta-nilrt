@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Strart boltd when thunderbolt devices are present at boot time.
+# For cases when thunderbolt is connected after boot, udev will take care of
+# starting it
+
+# boltctl causes /usr/libexec/boltd to run as a daemon so just call it instead
+# of explicitly daemonizing boltd.
+[ -d "/sys/bus/thunderbolt" ] && boltctl
