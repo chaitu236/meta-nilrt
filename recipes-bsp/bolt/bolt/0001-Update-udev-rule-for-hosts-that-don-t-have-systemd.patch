@@ -10,6 +10,8 @@ If dbus isn't running, like in cases when host boots with thunderbolt
 device connected, a separate mechanism must be used for starting boltd
 (e.g., an initscript).
 
+Upstream-Status: Inappropriate [NI-specific changes]
+
 Signed-off-by: Chaitanya Vadrevu <chaitanya.vadrevu@ni.com>
 ---
  data/90-bolt.rules | 2 +-
