@@ -1,0 +1,54 @@
+From d4b7f6a134ee09e8aef6e00cd0ff7650417721e5 Mon Sep 17 00:00:00 2001
+From: Chaitanya Vadrevu <chaitanya.vadrevu@ni.com>
+Date: Fri, 11 Aug 2023 15:35:05 -0500
+Subject: [PATCH] data: Limit some methods to root user
+
+nilrt doesn't have polkit. So allow access to "EnrollDevice", "Authorize",
+"ForgetDevice", "ForcePower" dbus methods only to root user.
+
+Upstream-Status: Inappropriate [NI-specific changes]
+
+Signed-off-by: Chaitanya Vadrevu <chaitanya.vadrevu@ni.com>
+---
+ data/org.freedesktop.bolt.conf | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/data/org.freedesktop.bolt.conf b/data/org.freedesktop.bolt.conf
+index cd8ea8d..4a2a933 100644
+--- a/data/org.freedesktop.bolt.conf
++++ b/data/org.freedesktop.bolt.conf
+@@ -34,6 +34,34 @@
+     <allow send_destination="org.freedesktop.bolt"
+            send_interface="org.freedesktop.bolt1.Power" />
+ 
++    <deny send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Manager" send_member="EnrollDevice"/>
++
++    <deny send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Device" send_member="Authorize"/>
++
++    <deny send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Manager" send_member="ForgetDevice"/>
++
++    <deny send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Power" send_member="ForcePower"/>
++
++  </policy>
++
++  <policy user="root">
++
++    <allow send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Manager" send_member="EnrollDevice"/>
++
++    <allow send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Device" send_member="Authorize"/>
++
++    <allow send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Manager" send_member="ForgetDevice"/>
++
++    <allow send_destination="org.freedesktop.bolt"
++           send_interface="org.freedesktop.bolt1.Power" send_member="ForcePower"/>
++
+   </policy>
+ 
+ 

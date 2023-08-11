@@ -8,6 +8,8 @@ SRC_URI += "\
    file://boltctl \
    file://0001-daemon-support-running-without-PolicyKit.patch \
    file://0002-Update-udev-rule-for-hosts-that-don-t-have-systemd.patch \
+   file://0003-exported-authorize-all-methods-by-default.patch \
+   file://0004-data-Limit-some-methods-to-root-user.patch \
 "
 
 FILES:${PN} += "${sysconfdir}/init.d/bolt"
