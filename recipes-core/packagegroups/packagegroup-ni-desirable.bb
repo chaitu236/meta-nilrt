@@ -59,8 +59,3 @@ RDEPENDS:${PN} += "\
 RDEPENDS:${PN}:append:x64 = "\
 	kernel-test-nohz \
 "
-
-# Thunderbolt support packages
-RDEPENDS:${PN} += "\
-	bolt \
-"
