@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Strart boltd when thunderbolt devices are present at boot time.
+# Start boltd when thunderbolt devices are present at boot time.
 # For cases when thunderbolt is connected after boot, udev will take care of
 # starting it
 
