@@ -17,7 +17,6 @@ DISTRO_FEATURES += "\
         pci \
         sysvinit \
         pam \
-        polkit \
         ptest \
         selinux \
         virtualization \

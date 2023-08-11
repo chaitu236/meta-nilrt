@@ -1,14 +1,18 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 DEPENDS += "update-rc.d-native"
+DEPENDS:remove = "polkit"
 
 SRC_URI += "\
    file://bolt \
    file://boltctl \
-   file://0001-Update-udev-rule-for-hosts-that-don-t-have-systemd.patch \
+   file://0001-daemon-support-running-without-PolicyKit.patch \
+   file://0002-Update-udev-rule-for-hosts-that-don-t-have-systemd.patch \
 "
 
 FILES:${PN} += "${sysconfdir}/init.d/bolt"
+
+EXTRA_OEMESON = "-Dpolkit-required=false"
 
 do_install:append() {
    install -d ${D}${sysconfdir}/init.d
