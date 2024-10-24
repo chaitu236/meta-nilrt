@@ -89,6 +89,9 @@ check_mounts() {
     elif sed -n 's/^[^ ]* \([^ ]*\) \([^ ]*\) .*$/\1 \2/p' /proc/mounts |
         grep -q "^/ smbfs$"; then
             echo "NOT configuring network interfaces: / is an SMB mount"
+    elif sed -n 's/^[^ ]* \([^ ]*\) \([^ ]*\) .*$/\1 \2/p' /proc/mounts |
+        grep -q "^/ overlay$"; then
+            echo "NOT configuring network interfaces: / is an overlay mount and might be using NFS underneath"
     elif sed -n 's/^[^ ]* \([^ ]*\) \([^ ]*\) .*$/\2/p' /proc/mounts |
         grep -qE '^(nfs|smbfs|ncp|coda)$'; then
             echo "NOT configuring network interfaces: network shares still mounted."
