@@ -50,7 +50,7 @@ echo "Mounting lower filesystem (nfs)"
 mount -t nfs "$NFS_SRV:$NFS_LOWER" "/lower" -o ro,nolock
 
 echo "Mounting upper filesystem (tmpfs)"
-mount -t tmpfs tmpfs "/upp_work" -o size=1G,rw
+mount -t tmpfs tmpfs "/upp_work" -o rw
 # upper and work need to be on same filesystem
 mkdir -p "/upp_work/upper"
 mkdir -p "/upp_work/work"
