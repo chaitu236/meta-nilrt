@@ -175,7 +175,6 @@ RDEPENDS_${PN} += "\
 	libarchive \
 	lighttpd \
 	ltp \
-	mailx \
 	msmtp \
 	net-tools \
 	pigz \
@@ -313,7 +312,6 @@ RDEPENDS_${PN} += "\
 	luajit \
 	mcpp \
 	memstat \
-	nodejs \
 	libio-pty-perl \
 	php \
 	pm-qa \
@@ -368,7 +366,6 @@ RDEPENDS_${PN} += "\
 	redis \
 	rrdtool \
 	rsyslog \
-	smartmontools \
 	can-utils \
 	tcsh \
 	tipcutils \
