@@ -13,10 +13,8 @@ KBUILD_FRAGMENTS_LOCATION ?= "nilrt"
 
 LINUX_VERSION_EXTENSION = "$([ "${LINUX_KERNEL_TYPE}" != "standard" ] && echo '-${LINUX_KERNEL_TYPE}')"
 
-# Setting EXTRA_OEMAKE to include CFLAGS settings is required as
-# the Kbuild system will clobber CC (which is used by OE for setting
-# the compiler and flags to the compiler/linker/etc.)
-EXTRA_OEMAKE += 'CFLAGS="${TOOLCHAIN_OPTIONS}"'
+# Only required for 4.14 kernels
+EXTRA_OEMAKE:append:xilinx-zynq = ' CFLAGS="${TOOLCHAIN_OPTIONS}" '
 
 # Kbuild intenionally clobbers CFLAGS/LDFLAGS for some binaries we ship in nilrt,
 # particularly in the tools/ dir (fixdep, genksyms etc), and OE has this insanity check
