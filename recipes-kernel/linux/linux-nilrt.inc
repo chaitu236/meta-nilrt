@@ -38,6 +38,9 @@ do_kernel_configme[depends] += "libgcc:do_populate_sysroot"
 SRC_URI = "\
 	${NILRT_GIT}/${GIT_KERNEL_REPO};protocol=https;branch=${KBRANCH} \
 "
+
+SRC_URI:append:xilinx-zynq = "file://${UBOOT_ENV_BINARY}"
+
 # Generically use the *latest* rev from the kernel source branch, if none is
 # specified by a recipe.
 SRCREV ?= "${AUTOREV}"
