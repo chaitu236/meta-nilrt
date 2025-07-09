@@ -31,10 +31,10 @@ fi
 
 if test -n \"$bootscriptenvrun\" ; then run bootscriptenvrun; fi
 
-#silent_tmp=${silent}
+silent_tmp=${silent}
 setenv silent
-echo "cvad: Booting LabVIEW RT..."
-#setenv silent ${silent_tmp}
+echo "Booting LabVIEW RT..."
+setenv silent ${silent_tmp}
 
 test -n "$manufacturer" ||
     setenv manufacturer National Instruments &&
