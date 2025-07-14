@@ -2,6 +2,7 @@ inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
 KBRANCH = "nilrt/${NI_RELEASE_VERSION}/${LINUX_VERSION}"
+KBRANCH:xilinx-zynq = "dev/cvadrevu/4.14_scarthgap"
 GIT_KERNEL_REPO = "linux.git"
 
 machine_srcrev="${SRCREV}"
