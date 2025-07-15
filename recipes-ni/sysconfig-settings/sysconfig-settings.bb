@@ -102,8 +102,8 @@ FILES:${PN} = "\
 "
 
 RDEPENDS:${PN} += "niacctbase bash"
-RDEPENDS:${PN}:x64 += "fw-printenv"
-RDEPENDS:${PN}:xilinx-zynq += "u-boot-fw-utils"
+RDEPENDS:${PN}:append:x64 = " fw-printenv"
+RDEPENDS:${PN}:append:xilinx-zynq = " u-boot-fw-utils"
 
 # SUBPACKAGES #
 ###############
@@ -122,8 +122,8 @@ FILES:${PN}-console = "\
 "
 
 RDEPENDS:${PN}-console += "sysconfig-settings"
-RDEPENDS:${PN}-console:x64 += "fw-printenv"
-RDEPENDS:${PN}-console:xilinx-zynq += "u-boot-fw-utils"
+RDEPENDS:${PN}-console:append:x64 = " fw-printenv"
+RDEPENDS:${PN}-console:append:xilinx-zynq = " u-boot-fw-utils"
 
 pkg_postinst_ontarget:${PN}-console () {
 	# add console out if we have a firmware variable for it (x86_64 targets only)

@@ -31,7 +31,7 @@ RDEPENDS:${PN} += "\
 	vim-tiny \
 "
 
-RDEPENDS:${PN}:x64 += "\
+RDEPENDS:${PN}:append:x64 = "\
 	dmidecode           \
 	efibootmgr          \
 	efivar              \
@@ -43,7 +43,7 @@ RDEPENDS:${PN}:x64 += "\
 	ni-smbios-helper    \
 	"
 
-RDEPENDS:${PN}:xilinx-zynq += "\
+RDEPENDS:${PN}:append:xilinx-zynq = "\
 	mtd-utils           \
 	mtd-utils-ubifs     \
 	u-boot-fw-utils     \

@@ -24,7 +24,7 @@ RDEPENDS:${PN} += "\
 "
 
 # ni-sync
-RDEPENDS:${PN}:x64 += "\
+RDEPENDS:${PN}:append:x64 = "\
 	ni-grpc-device \
 "
 
@@ -40,7 +40,7 @@ RDEPENDS:${PN} += "\
 	make \
 	pkgconfig \
 "
-RDEPENDS:${PN}:x64 += "\
+RDEPENDS:${PN}:append:x64 = "\
 	libfmi \
 "
 
@@ -102,7 +102,7 @@ RDEPENDS:${PN} += "\
 # Required by LabVIEW Real-Time
 # Team: LabVIEW Real-Time
 # Contact: sharpk
-RDEPENDS:${PN}:x64 += "\
+RDEPENDS:${PN}:append:x64 = "\
 	libglu \
 "
 # Required by PAtools Runtimesystem
