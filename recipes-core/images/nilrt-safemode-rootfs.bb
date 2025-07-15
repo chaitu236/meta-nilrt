@@ -14,13 +14,13 @@ SRC_URI += "\
 	file://${BPN}.preinst \
 "
 
-IMAGE_INSTALL_x64 += "\
+IMAGE_INSTALL:append:x64 += "\
 	fw-printenv \
 	kernel-image-bzimage \
 	nilrt-grub-safemode \
 "
 
-IMAGE_INSTALL_xilinx-zynq += "\
+IMAGE_INSTALL:append:xilinx-zynq += "\
 	u-boot-fw-utils \
 "
 
