@@ -10,11 +10,11 @@ IMAGE_INSTALL = "\
 	dkms \
 "
 
-IMAGE_INSTALL:append:x64 += "\
+IMAGE_INSTALL:append:x64 = "\
 	nilrt-grub-runmode \
 	"
 
-IMAGE_INSTALL:append:xilinx-zynq += "\
+IMAGE_INSTALL:append:xilinx-zynq = "\
 	u-boot-fw-utils \
 	bzip2 \
 "
