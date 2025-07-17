@@ -55,16 +55,18 @@ bootimg_fixup() {
 		-not -path "${IMAGE_ROOTFS}/boot" \
 		-a -not -path "${IMAGE_ROOTFS}/boot/*" \
 		-delete
-
-	# Promote the boot directory to the top level.
-	mv "${IMAGE_ROOTFS}/boot"/* "${IMAGE_ROOTFS}/"
-	rmdir "${IMAGE_ROOTFS}/boot"
 }
 
 bootimg_fixup:append:x64() {
 	# Promote EFI_NI_vars and SMBIOS_NI_vars to /boot
 	install -m 0644 "${IMAGE_ROOTFS}/${datadir}/fw_printenv/EFI_NI_vars" "${IMAGE_ROOTFS}/boot/EFI_NI_vars"
 	install -m 0644 "${IMAGE_ROOTFS}/${datadir}/fw_printenv/SMBIOS_NI_vars" "${IMAGE_ROOTFS}/boot/SMBIOS_NI_vars"
+}
+
+bootimg_fixup:append() {
+	# Promote the boot directory to the top level.
+	mv "${IMAGE_ROOTFS}/boot"/* "${IMAGE_ROOTFS}/"
+	rmdir "${IMAGE_ROOTFS}/boot"
 }
 
 # Sanity check that the image contains all the files that it should.
