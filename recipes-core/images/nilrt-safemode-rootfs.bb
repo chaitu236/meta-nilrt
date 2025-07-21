@@ -48,13 +48,6 @@ bootimg_fixup() {
 
 	install -m 0644 "${THISDIR}/files/bootimage.ini" "${IMAGE_ROOTFS}/boot/bootimage.ini"
 	sed -i "s/%component_version%/${BUILDNAME}/" "${IMAGE_ROOTFS}/boot/bootimage.ini"
-
-	# We've assembled everything we want under /boot.
-	# We now want to get rid of everything else.
-	find "${IMAGE_ROOTFS}" -mindepth 1 \
-		-not -path "${IMAGE_ROOTFS}/boot" \
-		-a -not -path "${IMAGE_ROOTFS}/boot/*" \
-		-delete
 }
 
 bootimg_fixup:append:x64() {
@@ -64,6 +57,13 @@ bootimg_fixup:append:x64() {
 }
 
 bootimg_fixup:append() {
+	# We've assembled everything we want under /boot.
+	# We now want to get rid of everything else.
+	find "${IMAGE_ROOTFS}" -mindepth 1 \
+		-not -path "${IMAGE_ROOTFS}/boot" \
+		-a -not -path "${IMAGE_ROOTFS}/boot/*" \
+		-delete
+
 	# Promote the boot directory to the top level.
 	mv "${IMAGE_ROOTFS}/boot"/* "${IMAGE_ROOTFS}/"
 	rmdir "${IMAGE_ROOTFS}/boot"
