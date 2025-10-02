@@ -16,7 +16,6 @@ IMAGE_INSTALL:append:x64 = "\
 
 IMAGE_INSTALL:append:xilinx-zynq = "\
 	u-boot-fw-utils \
-	bzip2 \
 "
 
 require includes/nilrt-image-base.inc
