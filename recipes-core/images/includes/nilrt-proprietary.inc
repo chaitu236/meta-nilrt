@@ -1,10 +1,8 @@
 # NI infrastructure packages to be installed in the image
 
-#NI_PROPRIETARY_SAFEMODE_PACKAGES = "\
-#        ni-software-installation-daemon \
-#"
-
-NI_PROPRIETARY_SAFEMODE_PACKAGES = ""
+NI_PROPRIETARY_SAFEMODE_PACKAGES = "\
+        ni-software-installation-daemon \
+"
 
 # @todo double check these are not needed on ARM
 NI_PROPRIETARY_x64_PACKAGES = "\
