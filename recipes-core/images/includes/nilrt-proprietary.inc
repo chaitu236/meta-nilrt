@@ -4,7 +4,9 @@ NI_PROPRIETARY_SAFEMODE_PACKAGES = "\
         ni-software-installation-daemon \
 "
 
-# @todo double check these are not needed on ARM
+# TODO: ni-wifibledd and ni-wireless-ath6kl are required for ARM but there are
+# no ARM builds for them. Add them back to NI_PROPRIETARY_COMMON_PACKAGES when
+# there are.
 NI_PROPRIETARY_x64_PACKAGES = "\
         ni-sdmon \
         ni-wifibledd \
