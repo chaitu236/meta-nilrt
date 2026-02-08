@@ -75,3 +75,11 @@ do_install:append () {
 
 	install -m 0644 ${WORKDIR}/SetSystemImageBlacklist ${D}/.syscfg-action/${SYSTEMLINK_GUID}/
 }
+
+pkg_preinst:${PN} () {
+	INSTALLED_VER_SHORT=$(nisafemodeversion | awk -F. '{print $1"."$2}')
+	if (( $(echo "$INSTALLED_VER_SHORT ${OSVERSION}" | awk '{print ($1 < $2)}') )); then
+		echo "Minimum safemode required ${OSVERSION}. Installed version $INSTALLED_VER_SHORT. Please upgrade firmware."
+		exit 1
+	fi
+}
