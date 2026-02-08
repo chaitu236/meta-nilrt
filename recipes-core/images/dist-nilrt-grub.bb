@@ -32,6 +32,8 @@ OSVERSION:x64 = "7.0"
 # So set minimum compatible safemode version to 26.3 which has them.
 OSVERSION:xilinx-zynq = "26.3"
 
+PACKAGE_ADD_METADATA_IPK:${PN} = "MinimumSafeMode: ${OSVERSION}"
+
 ROOTFS_IMAGE = "nilrt-runmode-rootfs"
 do_install[depends] += "${ROOTFS_IMAGE}:do_image_complete"
 
