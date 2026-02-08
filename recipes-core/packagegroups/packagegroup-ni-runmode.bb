@@ -27,6 +27,7 @@ RDEPENDS:${PN} = "\
 	nftables \
 	ni-cgroups \
 	ni-configpersistentlogs \
+	ni-feeds \
 	ni-locale-alias \
 	ni-modules-autoload \
 	ni-tracefs-utils \
