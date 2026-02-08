@@ -7,6 +7,8 @@ SRC_URI += " \
 	file://nisystemimage_pre \
 	file://nisystemimage_post \
 	file://${BPN}-config.cdf \
+	file://setimage.ini \
+	file://SetSystemImageBlacklist \
 "
 
 PV = "${DISTRO_VERSION}"
@@ -16,7 +18,7 @@ RDEPENDS:${PN} += "bash"
 SYSTEMLINK_GUID = "3CDECBF0-04E7-462E-BDD2-2AD4D9B02235"
 
 FILES:${PN} += "\
-	.syscfg-action/${SYSTEMLINK_GUID}/systemimage.tar.${NILRT_BSI_FSTYPE} \
+	.syscfg-action/${SYSTEMLINK_GUID}/* \
 "
 
 CDFGUID:x64 = "4C0005F7-54D1-492B-A7E7-C1E58BD9B972"
@@ -63,4 +65,11 @@ do_install:append () {
 	done
 
 	sed -i "s/%systemlink-guid%/${SYSTEMLINK_GUID}/g; s!%release%!${NILRT_FEED_NAME}!g; s/%lvversions%/$LV_VERSIONS_TEXT/g; s/%guid%/${CDFGUID}/g; s/%version%/$SHORTVER/g; s/%osvalue%/${OSVALUE}/g; s/%osversion%/${OSVERSION}/g; s/%filename%/$TARFILE/g;" $CDFOUT
+}
+
+do_install:append () {
+	install -m 0644 ${WORKDIR}/setimage.ini ${D}/.syscfg-action/${SYSTEMLINK_GUID}/setimage.ini
+	sed -i "s/%systemlink-guid%/${SYSTEMLINK_GUID}/g; s/%bsi_fstype%/${NILRT_BSI_FSTYPE}/g" ${D}/.syscfg-action/${SYSTEMLINK_GUID}/setimage.ini
+
+	install -m 0644 ${WORKDIR}/SetSystemImageBlacklist ${D}/.syscfg-action/${SYSTEMLINK_GUID}/
 }

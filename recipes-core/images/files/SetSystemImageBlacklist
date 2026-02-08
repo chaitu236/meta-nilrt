@@ -1,0 +1,5 @@
+etc/natinst/share
+etc/salt/pki
+etc/salt/minion_id
+etc/salt/minion.d/master.conf
+var/local/natinst/log/niskyline_rt_client_runtime.log
