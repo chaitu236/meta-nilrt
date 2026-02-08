@@ -13,6 +13,9 @@ SRC_URI += " \
 
 PV = "${DISTRO_VERSION}"
 
+# Use xz as it's supported on old BSIs and needed for SL install workflow.
+OPKGBUILDCMD = "opkg-build -Z xz"
+
 RDEPENDS:${PN} += "bash"
 
 SYSTEMLINK_GUID = "3CDECBF0-04E7-462E-BDD2-2AD4D9B02235"
