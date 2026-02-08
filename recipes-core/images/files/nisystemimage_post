@@ -1,0 +1,10 @@
+/etc/natinst/share/baseimage_postinst
+
+mv -f /etc/natinst/share/systemimage_files/config.cdf /etc/natinst/share/
+touch /etc/natinst/share/config.cdf # update modified time
+
+# Cleanup files after installation
+rm -rf /etc/natinst/share/systemimage_files
+rm -f /etc/natinst/share/nisystemimage_post
+rm -f /etc/natinst/share/nisystemimage_pre
+rm -f /etc/natinst/share/baseimage_postinst

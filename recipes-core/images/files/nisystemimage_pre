@@ -1,0 +1,23 @@
+# Hack for 19.x base images/safemode
+# Because nisystemimage mounts /boot to /mnt/.userfs.tmp/boot
+# and then extracts the contents of the image to /mnt/.userfs.tmp
+# there are two issues:
+#   1. when untarring the ARM image, the contents under /boot don't
+#   fit into the /boot partition and the untarring fails because there's
+#   no space on the disk
+#   2. when the base image postinst runs, it searches the /mnt/userfs/boot/tmp
+#   folder and it can't find it because it was untarred under /boot/tmp
+# Both issues can be worked around if we unmount the /mnt/.userfs.tmp/boot directory:
+#   1. untarring will be done on the user partition and there'll be plenty of space
+#   2. the /mnt/userfs/boot/tmp directory will exist (since /boot will be untarred on
+#   the user partition)
+hook_image_set_pre()
+{
+  safemode=$(/usr/local/natinst/bin/nisafemodeversion)
+  if [[ $safemode == 7.* ]]; then
+    is_mounted $WORKING_BOOTFS && run_cmd_always umount -f $WORKING_BOOTFS || true
+  fi
+}
+
+SYSTEM_IMAGE_LOG_FILE=/mnt/userfs/var/local/natinst/log/niskyline_rt_client_runtime.log
+exec &> >(tee -a $SYSTEM_IMAGE_LOG_FILE)
