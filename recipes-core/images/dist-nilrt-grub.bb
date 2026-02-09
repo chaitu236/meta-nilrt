@@ -11,7 +11,8 @@ SRC_URI += " \
 	file://SetSystemImageBlacklist \
 "
 
-PV = "${DISTRO_VERSION}"
+# FIXME
+PV = "26.3.0"
 
 # Use xz as it's supported on old BSIs and needed for SL install workflow.
 OPKGBUILDCMD = "opkg-build -Z xz"
@@ -35,6 +36,7 @@ OSVERSION:x64 = "7.0"
 # So set minimum compatible safemode version to 26.3 which has them.
 OSVERSION:xilinx-zynq = "26.3"
 
+RPROVIDES:${PN} = "{${SYSTEMLINK_GUID}}"
 PACKAGE_ADD_METADATA_IPK:${PN} = "MinimumSafeMode: ${OSVERSION}"
 
 ROOTFS_IMAGE = "nilrt-runmode-rootfs"
