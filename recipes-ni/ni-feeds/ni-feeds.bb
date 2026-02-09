@@ -11,8 +11,6 @@ FILES:${PN} += "\
 	${sysconfdir}/opkg/ni-third-party.conf \
 "
 
-S = "${WORKDIR}"
-
 inherit allarch
 
 do_install () {
