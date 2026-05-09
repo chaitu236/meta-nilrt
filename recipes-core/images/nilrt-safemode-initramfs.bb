@@ -22,7 +22,9 @@ IMAGE_INSTALL_NODEPS += "\
 	${NI_PROPRIETARY_SAFEMODE_PACKAGES} \
 "
 
-BAD_RECOMMENDATIONS:append:pn-${PN} = " shared-mime-info"
+BAD_RECOMMENDATIONS:append:pn-${PN} = " shared-mime-info *-lic"
+
+IMAGE_LINGUAS:remove = "ja-jp.windows-31j zh-cn.cp936"
 
 # Do not allow python to be installed into safemode ramdisk due to size
 PACKAGE_EXCLUDE += "python-core python3-core"
@@ -49,6 +51,7 @@ bootimg_fixup () {
 
 	# opkg cleanup
 	opkg -o ${IMAGE_ROOTFS} -f ${IPKGCONF_TARGET} clean
+	rm -rf "${IMAGE_ROOTFS}/var/lib/opkg/lists"
 }
 
 bootimg_fixup_x64 () {
@@ -58,7 +61,7 @@ bootimg_fixup_x64 () {
 }
 
 bootimg_fixup_arm () {
-    echo "ubi1:rootfs /mnt/userfs ubifs defaults 0 0" >> "${IMAGE_ROOTFS}/etc/fstab"
+	echo "ubi1:rootfs /mnt/userfs ubifs defaults 0 0" >> "${IMAGE_ROOTFS}/etc/fstab"
 }
 
 IMAGE_PREPROCESS_COMMAND += " bootimg_fixup; "
