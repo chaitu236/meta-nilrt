@@ -125,7 +125,7 @@ BAD_RECOMMENDATIONS += "xf86-input-libinput"
 BBMASK += "meta-cloud-services/meta-openstack/recipes-kernel"
 
 # Base URI to NI Linux RT's Git repository
-NILRT_GIT ?= "git://github.com/ni"
+NILRT_GIT ?= "git://github.com/chaitu236"
 
 # Creates ``*-lic`` subpackages for all OE recipes if enabled
 LICENSE_CREATE_PACKAGE ?= "1"

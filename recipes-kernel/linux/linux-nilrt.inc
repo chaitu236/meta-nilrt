@@ -1,7 +1,7 @@
 inherit kernel
 require recipes-kernel/linux/linux-yocto.inc
 
-KBRANCH = "nilrt/${NI_RELEASE_VERSION}/${LINUX_VERSION}"
+KBRANCH = "dev/cvadrevu/4.14_safemode_defconfig"
 GIT_KERNEL_REPO = "linux.git"
 
 machine_srcrev="${SRCREV}"
