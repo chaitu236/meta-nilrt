@@ -5,8 +5,6 @@ COMPATIBLE_MACHINE = "xilinx-zynq"
 
 require linux-nilrt-alternate.inc
 
-KBUILD_DEFCONFIG:armv7a = "nati_zynq_safemode_defconfig"
-
 INITRAMFS_IMAGE = "nilrt-safemode-initramfs"
 FIT_DESC = "zynq_safemode - ${BUILDNAME}"
 FIT_VERSION = "${BUILDNAME}"
