@@ -9,6 +9,8 @@ RDEPENDS:${PN}-fw-utils = "u-boot-env"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 SRC_URI += "file://0001-tools-Add-fdtview-a-tool-to-validate-FIT-images.patch"
 
+PACKAGES:append = " ${PN}-fdtview"
+
 do_compile:append() {
 	oe_runmake -C ${S} envtools NO_SDL=1 O=${B}
 }
@@ -32,4 +34,4 @@ do_install:append() {
 }
 
 FILES:${PN}-fw-utils = "${bindir}/fw_printenv ${bindir}/fw_setenv ${base_sbindir}/fw_printenv ${base_sbindir}/fw_setenv"
-FILES:${PN}-mkimage:append = " ${bindir}/fdtview ${base_sbindir}/fdtview"
+FILES:${PN}-fdtview = " ${bindir}/fdtview ${base_sbindir}/fdtview"
