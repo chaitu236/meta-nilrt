@@ -21,7 +21,6 @@ RDEPENDS:${PN} = "\
 	iproute2-tc \
 	ldd \
 	libmpc \
-	libpython3 \
 	librtpi \
 	libyaml \
 	lldpd \
@@ -36,6 +35,18 @@ RDEPENDS:${PN} = "\
 	niwatchdogpet \
 	opkg-utils-shell-tools \
 	parted \
+	rtctl \
+	sysconfig-settings \
+	systemimageupdateinfo \
+	trace-cmd \
+	util-linux-sfdisk \
+	vlan \
+	zip \
+"
+
+# SystemLink deps
+RDEPENDS:${PN}:append:x64 = "\
+	libpython3 \
 	python3-aiodns \
 	python3-aiohttp \
 	python3-asn1crypto \
@@ -113,15 +124,8 @@ RDEPENDS:${PN} = "\
 	python3-xml \
 	python3-xmlrpc \
 	python3-yarl \
-	rtctl \
 	salt-common \
 	salt-minion \
-	sysconfig-settings \
-	systemimageupdateinfo \
-	trace-cmd \
-	util-linux-sfdisk \
-	vlan \
-	zip \
 "
 
 RDEPENDS:${PN}:append:x64 = "\
