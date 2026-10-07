@@ -117,6 +117,7 @@ RDEPENDS:${PN} = "\
 	salt-common \
 	salt-minion \
 	sysconfig-settings \
+	syslog-ng \
 	systemimageupdateinfo \
 	trace-cmd \
 	util-linux-sfdisk \

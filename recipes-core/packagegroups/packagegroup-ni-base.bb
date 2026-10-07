@@ -84,7 +84,6 @@ RDEPENDS:${PN} += "\
 	sudo \
 	sysconfig-settings \
 	sysconfig-settings-console \
-	syslog-ng \
 	sysvinit \
 	tar \
 	udev-extraconf \
